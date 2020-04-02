@@ -146,7 +146,7 @@ function attachHexToColor(color) {
 }
 
 function updateMoveCount() {
-  var moveDisplay = document.getElementById("move-count");
+  var moveDisplay = document.getElementById("move-content");
   moveDisplay.innerHTML = `Move count: ${moveCount}`; // update count display
 }
 
