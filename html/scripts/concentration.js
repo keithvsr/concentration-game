@@ -1,4 +1,5 @@
 var firstSquare = null;
+var moveCount = 0;
 var resetButton = document.getElementById("reset-button");
 var colors = [];
 var gameSquares = [];
@@ -15,7 +16,7 @@ for (var i = 0; i < maxGametiles; i++) {
 if (resetButton.addEventListener)
 	resetButton.addEventListener("click", clearGame, false);
 else if (resetButton.attachEvent)
-	resetButton.attachEvent('onClick', clearGame);
+	resetButton.attachEvent("onClick", clearGame);
 
 function GameSquare(el, color) {
 	this.el = el;
@@ -66,6 +67,7 @@ function clearGame() {
 	gameSquares.forEach(function(gameSquare) {
   	gameSquare.reset();
   }); // reset the game objects
+  moveCount = 0; // reset the move count
   setTimeout(function() {
   	randomizeColors();
   }, 400); // randomize the color class selection
@@ -75,6 +77,7 @@ function clearGame() {
       console.log(thing);
       attachHexToColor(thing);
     }
+    updateMoveCount();
   },500);
 }
 
@@ -123,6 +126,8 @@ function checkGame(gameSquare) {
     }, 400);
   }
   firstSquare = null;
+  moveCount++;
+  updateMoveCount();
 }
 
 function getColorHex() {
@@ -138,6 +143,11 @@ function attachHexToColor(color) {
     // elements[i].style.background-color = hexColor;
     elements[i].style.backgroundColor = hexColor;
   }
+}
+
+function updateMoveCount() {
+  var moveDisplay = document.getElementById("move-count");
+  moveDisplay.innerHTML = `Move count: ${moveCount}`; // update count display
 }
 
 setupGame();
