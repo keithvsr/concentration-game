@@ -22,4 +22,4 @@ RUN apk add --no-cache bash
 # RUN echo "Nginx is running... on '\$PORT'"
 
 # Trying to move commands to one shell file rather than start all these
-CMD /alpine_wrapper.sh
+CMD ["./alpine_wrapper.sh"]
