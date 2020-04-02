@@ -2,7 +2,7 @@ var firstSquare = null;
 var resetButton = document.getElementById("reset-button");
 var colors = [];
 var gameSquares = [];
-var maxGametiles = 10;  // total number of tiles you can support
+var maxGametiles = 16;  // total number of tiles you can support
 for (var i = 0; i < maxGametiles; i++) {
   // var elements = document.getElementsByClassName('.square-' + i);
   // console.log("Before: " + elements.length);
@@ -65,10 +65,17 @@ function randomizeColors() {
 function clearGame() {
 	gameSquares.forEach(function(gameSquare) {
   	gameSquare.reset();
-  });
+  }); // reset the game objects
   setTimeout(function() {
   	randomizeColors();
-  }, 500);
+  }, 400); // randomize the color class selection
+  setTimeout(function() {
+    for (var i = 0; i < maxGametiles; i++) { // reshuffle bg color selection
+      var thing = "square-" + i;
+      console.log(thing);
+      attachHexToColor(thing);
+    }
+  },500);
 }
 
 function setupGame() {
@@ -127,10 +134,8 @@ function getColorHex() {
 function attachHexToColor(color) {
   var hexColor = getColorHex();
   var elements = document.getElementsByClassName(color);
-  console.log(elements);
   for (var i = 0; i < elements.length; i++) {
     // elements[i].style.background-color = hexColor;
-    console.log(elements[i]);
     elements[i].style.backgroundColor = hexColor;
   }
 }
@@ -140,6 +145,6 @@ setupGame();
 // attachHexToColor();
 for (var i = 0; i < maxGametiles; i++) {
   var thing = "square-" + i;
-  console.log(thing);
+  // console.log(thing);
   attachHexToColor(thing);
 }
