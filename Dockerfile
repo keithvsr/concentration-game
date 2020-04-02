@@ -8,6 +8,6 @@ COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template \
     > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
     
-RUN cat /etc/nginx/conf.d/default.conf.template | grep 'listen'
+RUN cat /etc/nginx/conf.d/default.conf | grep 'listen'
 
 # RUN echo "Nginx is running... on '\$PORT'"
