@@ -1,10 +1,14 @@
 #game {
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 450px;
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid red;
+  padding: 25px;
+  border-radius: 20px;
+  border: 10px double #000000;
+  background-color: #87ceeb;
 }
 
 #additionals {
@@ -42,11 +46,13 @@
 
 .game-square {
   box-sizing: border-box;
-  border: 1px solid #000;
+  border: 3px outset #CCCCCC;
   width: 100px;
   height: 100px;
   position: relative;
   overflow: hidden;
+  border-radius: 10px 20px;
+  box-shadow: 5px 5px 5px #111111;
 }
 
 .game-square > div {
