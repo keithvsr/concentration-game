@@ -4,7 +4,7 @@ COPY html /usr/share/nginx/html
 
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 
-COPY alpine_wrapper.sh /
+COPY new_wrapper.sh /
 
 # Need Bash for Alpine (duh)
 RUN apk add --no-cache bash
@@ -22,4 +22,4 @@ RUN apk add --no-cache bash
 # RUN echo "Nginx is running... on '\$PORT'"
 
 # Trying to move commands to one shell file rather than start all these
-CMD ["./alpine_wrapper.sh"]
+CMD ["./new_wrapper.sh"]
