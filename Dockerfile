@@ -6,20 +6,8 @@ COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 
 COPY new_wrapper.sh /
 
-# Need Bash for Alpine (duh)
+# Need Bash for alpine
 RUN apk add --no-cache bash
 
-# Heroku-ify the port
-# CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template \
-    # > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
-    
-
-
-# RUN cat /etc/nginx/conf.d/default.conf | grep 'listen'
-
-# RUN uname -n
-
-# RUN echo "Nginx is running... on '\$PORT'"
-
-# Trying to move commands to one shell file rather than start all these
-CMD ["./new_wrapper.sh"]
+# move commands to one shell file rather than individual RUN instances
+CMD ["./startup.sh"]
