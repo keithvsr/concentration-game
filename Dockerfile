@@ -4,7 +4,7 @@ COPY html /usr/share/nginx/html
 
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 
-COPY new_wrapper.sh /
+COPY startup.sh /
 
 # Need Bash for alpine
 RUN apk add --no-cache bash
